@@ -60,7 +60,7 @@ function ajaxCall(){
   $(".button-color").on("click", function(){
 
       var gif = $(this).attr("data-button");
-      var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + gif + "&api_key=TOuP9ZjweETzxVFHZQQmykw9HDzTIp3h&limit=10";
+      var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + gif + "&api_key=TOuP9ZjweETzxVFHZQQmykw9HDzTIp3h&limit=10";
       // var rating = response.data[i].rating;
       console.log("giphy2 " + gif);
       console.log("giphy2 " + queryURL);
