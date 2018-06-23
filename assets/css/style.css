@@ -3,21 +3,16 @@
 }
 body {
     background: #dfda8c; 
-    color: #fff;
+    color: #4aaaa5;
 }
 /* ---------------------------- */
 
 .button-color {
     background: #4aaaa5;
-    color: #fff;
+    color: #dfda8c;
     padding: 10px;
     margin: 10px;
 }
-
-/* #button-align {
-    text-align: center;
-    
-} */
 
 /* ---------------------------- */
 /* form css */
@@ -36,6 +31,7 @@ body {
     width: 300px;
     font-size: 24px;
     margin: 0px;
+    text-align: center;
 }
 
 form {
@@ -43,6 +39,9 @@ form {
     text-align: center;
 }
 /* ---------------------------- */
+.header {
+    text-align: center;
+}
 img {
     height: 200px;
     width: 200px;
@@ -52,18 +51,20 @@ img {
 .rating {
     color: #4aaaa5;
     font-weight: bold;
-    text-align: left;
-}
-
-#content {
-    border: solid 2px #4aaaa5;
-    padding: 10px;
-    margin: 10px;
     text-align: center;
     
 }
 
+#content {
+    border: solid 2px #4aaaa5;
+    padding: 0px;
+    margin: 10px;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
 .rating-image {
     float: left;
+    text-align: center;
 }
 /* ---------------------------- */
