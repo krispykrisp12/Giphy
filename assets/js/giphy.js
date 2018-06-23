@@ -95,28 +95,33 @@ function ajaxCall(){
 
     var still =  giphy[i].images.original_still.url;
     var animate = giphy[i].images.original.url;
-    var images = '<img class="state" data-still="'+ still +'" data-animate="'+ animate +'" src="'+ still + '"  >'
+    var images = '<img class="state" data-still="'+ still +'" data-animate="'+ animate +'"  data-current="still" src="'+ still + '"  >'
     var rating = "<div class='rating'>Rating: " + giphy[i].rating + "</div>";
 
-  
+    
     // var images = '<img class="animate" src= " ' + giphy[i].images.original.url + '  " >';
     
     $("#display-giphy").append("<div class='rating-image'>" + rating + images + "</div>");
   
-    $(".state").on("click", function(){
-      if (still === still) {
+      $(".state").on("click", function(){
+
+        var state = $(this).attr("data-current");
+
+        if (state === "still") {
+
+          $(this).attr("src", $(this).attr("data-animate"));
+          $(this).attr("data-current", "animate");
+
+        } else {
+
+          $(this).attr("src", $(this).attr("data-still"));
+          $(this).attr("data-current", "still");
+
+        }
         
-        $(this).attr("src", $(this).attr("data-animate"));
-        $(this).attr("data-still", "animate");
+      });
 
-      } else {
-
-        $(this).attr("src", $(this).attr("data-still"));
-        $(this).attr("data-still", "still");
-
-      }
-    });
-      }
+    }
 
       
       
