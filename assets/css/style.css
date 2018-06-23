@@ -7,13 +7,27 @@ body {
     font-family: Arial, Helvetica, sans-serif;
 }
 /* ---------------------------- */
+.top {
+    text-align: center;
+    background: #4aaaa5;
+    color: #dfda8c;
+    width: 100%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
 
+
+}
 .button-color {
     background: #4aaaa5;
     color: #dfda8c;
-    padding: 10px;
-    margin: 10px;
+    padding: 3px;
+    margin: 1px;
     font-size: 14px;
+}
+button {
+    height: 50px;
+    width: 108px;
 }
 
 /* ---------------------------- */
@@ -37,7 +51,7 @@ body {
 }
 
 form {
-    margin: 10px;
+    margin-bottom: 10px;
     text-align: center;
 }
 /* ---------------------------- */

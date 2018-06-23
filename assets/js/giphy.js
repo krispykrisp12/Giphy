@@ -20,19 +20,18 @@ function buttonDisplay(){
 
   console.log("button display " + sports.length);
 
-
+  // loop through the array
   for (var i = 0; i < sports.length; i++){
 
-    // Error checking
-    // console.log(sports[i]);
-    // creating the button
+   
+    // calling the drawButton function
     drawButton(sports[i]);
     
   }
  
 }
 
-
+// Creating the buttons function(drawButton())
 function drawButton(buttonName){
 
   var button;
@@ -52,86 +51,69 @@ function drawButton(buttonName){
 // -------------------------------------
 buttonDisplay();
 
-
 ajaxCall();
 // -------------------------------------
-
-
-
-
 // =========== functions =============================
 
 function ajaxCall(){
 
   $(".button-color").on("click", function(){
-  
-  
-  
-  var gif = $(this).attr("data-button");
-  var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + gif + "&api_key=TOuP9ZjweETzxVFHZQQmykw9HDzTIp3h&limit=10";
-  // var rating = response.data[i].rating;
-  console.log("giphy2 " + gif);
-  console.log("giphy2 " + queryURL);
 
-  $.ajax({
+      var gif = $(this).attr("data-button");
+      var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + gif + "&api_key=TOuP9ZjweETzxVFHZQQmykw9HDzTIp3h&limit=10";
+      // var rating = response.data[i].rating;
+      console.log("giphy2 " + gif);
+      console.log("giphy2 " + queryURL);
 
-    url: queryURL,
-    method: "GET"
+      $.ajax({
 
-  }).then(function(response) {
+        url: queryURL,
+        method: "GET"
 
-   $("#display-giphy").empty();
-   
+      }).then(function(response) {
 
-    // console.log("It works" + response);
-    var giphy = response.data;
-  
-    // var rating = response.data[i].rating;
-    console.log("giphy2 " + giphy.length);
-    // console.log(rating);
+      $("#display-giphy").empty();
+        // console.log("It works" + response);
+        var giphy = response.data;
+        // var rating = response.data[i].rating;
+        console.log("giphy2 " + giphy.length);
+        // console.log(rating);
+        // Giphy for loop variables
+        for (var i = 0; i < giphy.length; i++){
+        // for loop variables
+        var still =  giphy[i].images.original_still.url;
+        var animate = giphy[i].images.original.url;
+        var images = '<img class="state" data-still="'+ still +'" data-animate="'+ animate +'"  data-current="still" src="'+ still + '"  >'
+        var rating = "<div class='rating'>Rating: " + giphy[i].rating + "</div>";
+        // Display 
+          $("#display-giphy").append("<div class='rating-image'>" + images + rating + "</div>");
+          
+              $(".state").on("click", function(){
 
-  
-    for (var i = 0; i < giphy.length; i++){
+                var state = $(this).attr("data-current");
 
-    var still =  giphy[i].images.original_still.url;
-    var animate = giphy[i].images.original.url;
-    var images = '<img class="state" data-still="'+ still +'" data-animate="'+ animate +'"  data-current="still" src="'+ still + '"  >'
-    var rating = "<div class='rating'>Rating: " + giphy[i].rating + "</div>";
+                if (state === "still") {
 
-    
-    // var images = '<img class="animate" src= " ' + giphy[i].images.original.url + '  " >';
-    
-    $("#display-giphy").append("<div class='rating-image'>" + rating + images + "</div>");
-  
-      $(".state").on("click", function(){
+                  $(this).attr("src", $(this).attr("data-animate"));
+                  $(this).attr("data-current", "animate");
 
-        var state = $(this).attr("data-current");
+                } else {
 
-        if (state === "still") {
+                  $(this).attr("src", $(this).attr("data-still"));
+                  $(this).attr("data-current", "still");
 
-          $(this).attr("src", $(this).attr("data-animate"));
-          $(this).attr("data-current", "animate");
+                }
+                
+            });
 
-        } else {
-
-          $(this).attr("src", $(this).attr("data-still"));
-          $(this).attr("data-current", "still");
-
-        }
+          }
         
       });
-
-    }
-
-      
-      
-      
-    
-    });
   });
 
 }
 
+// Adding buttons through user inputs 
 function addButton(){
   $("#send").on("click", function(event) {
 
@@ -154,8 +136,4 @@ function addButton(){
  
 
 });
-
-
-
-
-
+// End of code
