@@ -82,25 +82,48 @@ function ajaxCall(){
 
    $("#display-giphy").empty();
    
+
     // console.log("It works" + response);
     var giphy = response.data;
+  
     // var rating = response.data[i].rating;
     console.log("giphy2 " + giphy.length);
     // console.log(rating);
 
+  
     for (var i = 0; i < giphy.length; i++){
-      var images = '<img src= " ' + giphy[i].images.original.url + ' " >';
-      var rating = "<div class='rating'>Rating: " + giphy[i].rating + "</div>";
+
+    var still =  giphy[i].images.original_still.url;
+    var animate = giphy[i].images.original.url;
+    var images = '<img class="state" data-still="'+ still +'" data-animate="'+ animate +'" src="'+ still + '"  >'
+    var rating = "<div class='rating'>Rating: " + giphy[i].rating + "</div>";
+
+  
+    // var images = '<img class="animate" src= " ' + giphy[i].images.original.url + '  " >';
+    
+    $("#display-giphy").append("<div class='rating-image'>" + rating + images + "</div>");
+  
+    $(".state").on("click", function(){
+      if (still === still) {
+        
+        $(this).attr("src", $(this).attr("data-animate"));
+        $(this).attr("data-still", "animate");
+
+      } else {
+
+        $(this).attr("src", $(this).attr("data-still"));
+        $(this).attr("data-still", "still");
+
+      }
+    });
+      }
+
       
-      $("#display-giphy").append("<div class='rating-image'>" + rating + images + "</div>");
-
-    }
-
+      
+      
     
-   
-    
+    });
   });
-});
 
 }
 
